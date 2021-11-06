@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'api_url' => 'https://vast-ridge-96414.herokuapp.com/',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

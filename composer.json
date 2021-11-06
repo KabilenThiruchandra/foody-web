@@ -51,8 +51,7 @@
             "php artisan clear-compiled",
             "chmod -R 775 public/",
             "chmod -R 775 storage/",
-            "chmod -R 775 bootstrap/",
-            "php artisan optimize"
+            "chmod -R 775 bootstrap/"
         ]
     },
     "extra": {

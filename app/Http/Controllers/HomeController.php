@@ -18,17 +18,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $response = Http::get(config('app.api_url') . 'recent-searches');
+
+        return view('home')->with('searches', $response->json());
     }
 
-    public function search(Request $request)
+    public function search($title)
     {
-        $response = Http::get(config('app.api_url') . 'search?find=' . rawurlencode($request->title));
+        $response = Http::get(config('app.api_url') . 'search?find=' . rawurlencode($title));
+        $response2 = Http::get(config('app.api_url') . 'recent-searches');
 
         if(!$response->json()['status'] || empty($response->json()['data'])){
-            return view('home')->with('error', 'The item is not available.');
+            return view('home', ['error' => 'Sorry, The item is not available.', 'searches' => $response2->json()]);
         } else {
-            return view('home')->with( 'data', $response->json());
+            return view('home', [ 'data' => $response->json() , 'searches' => $response2->json()]);
         }
     }
 
@@ -43,7 +46,7 @@ class HomeController extends Controller
         $response = Http::get(config('app.api_url') . 'search?title=' . rawurlencode($data));
 
         if(!$response->json()['status']){
-            return view('home')->with('error', 'The item\'s information is not available.');
+            return view('show', ['error' => 'Sorry, The item\'s information is not available.']);
         } else {
             return view('show')->with( 'data', $response->json());
         }

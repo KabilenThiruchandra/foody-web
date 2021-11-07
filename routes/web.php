@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/find/{id}',   'HomeController@search')->name('search');
 Route::get('/search/{id}', 'HomeController@search2')->name('search2');

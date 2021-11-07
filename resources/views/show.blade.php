@@ -7,7 +7,10 @@
         <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-sm btn-primary ml-10" style="background-color: #2165ec" href="{{ url()->previous() }}">Back</a>Nutrition Info
+                    <h4>Nutrition Info</h4>
+                    <div class="col-auto">
+                        <a class="btn btn-sm btn-primary ml-1" style="background-color: #2165ec" href="{{ url()->previous() }}">Back</a>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -26,17 +29,17 @@
                                 $data = (object)$data;
                             @endphp
 
-                            <div class="col-5 mb-10">
+                            <div class="col-4 mb-8">
                                 <img class="card-img-top" src="{{ $data->image }}" alt="Card image cap">
                             </div>
 
-                            <div class="col-3 mb-6">
-                                <h4>{{ $data->title }}</h4>
+                            <div class="col-4 mb-8">
+                                <h2>{{ $data->title }}</h2>
                                 <ul>
-                                    <li>Calories : {{ $data->calories }}</li>
-                                    <li>Fat : {{ $data->fat . $data->unit }}</li>
-                                    <li>Protein : {{ $data->protein . $data->unit }}</li>
-                                    <li>Carbs : {{ $data->carbs . $data->unit }}</li>
+                                    <li class="font-weight-bold">Calories : {{ $data->calories }}</li>
+                                    <li class="font-weight-bold">Fat : {{ $data->fat . $data->unit }}</li>
+                                    <li class="font-weight-bold">Protein : {{ $data->protein . $data->unit }}</li>
+                                    <li class="font-weight-bold">Carbs : {{ $data->carbs . $data->unit }}</li>
                                 </ul>
                             </div>
                         @endif
